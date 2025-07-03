@@ -4,7 +4,7 @@ import Search from './components/Search'
 // https://github.com/adrianhajdin/react-movies/tree/main
 
 const App = () => {
-  const [searchTerm, setSearchTerm] = useState('batman');
+  const [searchTerm, setSearchTerm] = useState('');
   return (
     <main>
       <div className='pattern'/>
@@ -16,6 +16,7 @@ const App = () => {
         </h1>
       </header>
       <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+      <h1 className='text-white'>{searchTerm}</h1>
   </div>
     </main>
   )
