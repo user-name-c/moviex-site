@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Search from './components/Search'
 import Spinner from './components/Sppiner';
+import MovieCard from './components/MovieCard';
 
 // https://github.com/adrianhajdin/react-movies/tree/main
 
@@ -70,7 +71,7 @@ const App = () => {
           ): errorMessage ? (
             <p>{errorMessage}</p>
         ): (<ul>
-          {movieList.map((movie)=>(<p key={movie.id} className='text-white'>{movie.title}</p>))}
+          {movieList.map((movie)=>(<MovieCard key={movie.id} movie={movie} />))}
         </ul>)
         };
         {errorMessage && <p  className='text-red-500'>{errorMessage}</p>}
