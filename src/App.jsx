@@ -69,10 +69,10 @@ const App = () => {
           ): errorMessage ? (
             <p>{errorMessage}</p>
         ): (<ul>
-          {movieList.map((movie)=>(<p className='text-white'>{movie.title}</p>))}
+          {movieList.map((movie)=>(<p key={movie.id} className='text-white'>{movie.title}</p>))}
         </ul>)
         };
-        {errorMessage && <p className='text-red-500'>{errorMessage}</p>}
+        {errorMessage && <p  className='text-red-500'>{errorMessage}</p>}
       </section>
       <h1 className='text-white'>{searchTerm}</h1>
 
