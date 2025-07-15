@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Search from './components/Search'
+import Spinner from './components/Sppiner';
 
 // https://github.com/adrianhajdin/react-movies/tree/main
 
@@ -65,7 +66,7 @@ const App = () => {
         <h2>All movies</h2>
 
         {isLoading?(
-            <p className='text-white'>Loading...</p>
+            <Spinner/>
           ): errorMessage ? (
             <p>{errorMessage}</p>
         ): (<ul>
