@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useDebounce } from 'react-use';
 import Search from './components/Search'
 import Spinner from './components/Sppiner';
 import MovieCard from './components/MovieCard';
@@ -20,6 +21,10 @@ const App = () => {
   const[errorMessage, setErrorMessage] = useState('');
   const[movieList, setMovieList] = useState([]);
   const[isLoading, setIsLoading] = useState(false);
+  const[debounceSearchTerm, setDebounceSearchTerm] = useState('');
+
+  useDebounce(()=> setDebounceSearchTerm(searchTerm), 700, [searchTerm])
+
   const fetchMovies = async(query='') => {
     setIsLoading(true);
     setErrorMessage('');
@@ -48,8 +53,8 @@ const App = () => {
   }
 
   useEffect(()=>{
-    fetchMovies(searchTerm);
-  },[searchTerm]);
+    fetchMovies(debounceSearchTerm);
+  },[debounceSearchTerm]);
 
   return (
     <main>
@@ -76,7 +81,7 @@ const App = () => {
         };
         {errorMessage && <p  className='text-red-500'>{errorMessage}</p>}
       </section>
-      <h1 className='text-white'>{searchTerm}</h1>
+      {/* <h1 className='text-white'>{searchTerm}</h1> */}
 
   </div>
     </main>
